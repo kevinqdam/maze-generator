@@ -1,0 +1,9 @@
+.maze {
+  display: grid;
+  padding-top: 10px;
+}
+
+.input-side-length {
+  padding-top: 10px;
+  width: 100px;
+}

@@ -24,12 +24,16 @@ module.exports = {
         loader: require.resolve('babel-loader'),
       },
       {
+        test: /\.(s(a|c)ss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.png|svg|jpg|gif$/,
-        use: ['file-loader'],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },

@@ -1,0 +1,22 @@
+$active-cell-color: teal;
+$cell-wall: 1px solid black;
+
+.active {
+  color: $active-cell-color;
+}
+
+.top-wall {
+  border-top: $cell-wall;
+}
+
+.right-wall {
+  border-right: $cell-wall;
+}
+
+.bottom-wall {
+  border-bottom: $cell-wall;
+}
+
+.left-wall {
+  border-left: $cell-wall;
+}

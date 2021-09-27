@@ -1,37 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Cell.css';
+import styles from './Cell.module.scss';
 
 const Cell = function Cell(props) {
   const {
-    hasTopWall, hasRightWall, hasBottomWall, hasLeftWall, cellSideLengthInPx
+    cell: {
+      hasTopWall, hasRightWall, hasBottomWall, hasLeftWall,
+    },
   } = props;
   const classNames = [
-    'cell',
-    hasTopWall ? 'top-wall' : '',
-    hasRightWall ? 'right-wall' : '',
-    hasBottomWall ? 'bottom-wall' : '',
-    hasLeftWall ? 'left-wall' : '',
-  ].filter((className) => className.length > 0);
+    styles.cell,
+    hasTopWall ? styles['top-wall'] : null,
+    hasRightWall ? styles['right-wall'] : null,
+    hasBottomWall ? styles['bottom-wall'] : null,
+    hasLeftWall ? styles['left-wall'] : null,
+  ].filter((className) => (className !== undefined && className !== null));
 
   return (
     <div className={classNames.join(' ')} />
   );
 };
 Cell.propTypes = {
-  hasTopWall: PropTypes.bool,
-  hasRightWall: PropTypes.bool,
-  hasBottomWall: PropTypes.bool,
-  hasLeftWall: PropTypes.bool,
-  cellSideLengthInPx: PropTypes.number,
+  cell: PropTypes.shape({
+    hasTopWall: PropTypes.bool,
+    hasRightWall: PropTypes.bool,
+    hasBottomWall: PropTypes.bool,
+    hasLeftWall: PropTypes.bool,
+  }),
 };
 Cell.defaultProps = {
-  hasTopWall: true,
-  hasRightWall: true,
-  hasBottomWall: true,
-  hasLeftWall: true,
-  cellSideLengthInPx: 10,
+  cell: PropTypes.shape({
+    hasTopWall: true,
+    hasRightWall: true,
+    hasBottomWall: true,
+    hasLeftWall: true,
+  }),
 };
 
 export default Cell;

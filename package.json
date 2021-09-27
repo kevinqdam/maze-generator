@@ -18,6 +18,13 @@
     "url": "https://github.com/kevindam96/maze-generator/issues"
   },
   "homepage": "https://github.com/kevindam96/maze-generator#readme",
+  "dependencies": {
+    "@ant-design/icons": "4.7.0",
+    "antd": "^4.16.13",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
@@ -35,15 +42,11 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
     "jest": "^27.2.1",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
     "style-loader": "^3.3.0",
-    "webpack": "^5.53.0",
+    "webpack": "^5.54.0",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.0"
-  },
-  "dependencies": {
-    "antd": "^4.16.13",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
   }
 }

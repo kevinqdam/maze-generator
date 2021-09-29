@@ -1,11 +1,13 @@
+import { isNil } from 'lodash';
+
 const createCell = function createGridCell(spec) {
-  if (spec === undefined) {
-    return Object.freeze({
+  if (isNil(spec)) {
+    return {
       hasTopWall: true,
       hasRightWall: true,
       hasBottomWall: true,
       hasLeftWall: true,
-    });
+    };
   }
 
   const {
@@ -15,12 +17,12 @@ const createCell = function createGridCell(spec) {
     hasLeftWall = true,
   } = spec;
 
-  return Object.freeze({
+  return {
     hasTopWall,
     hasRightWall,
     hasBottomWall,
     hasLeftWall,
-  });
+  };
 };
 
 export default createCell;

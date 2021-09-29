@@ -3,7 +3,7 @@ import {
   MIN_GRID_SIDE_LENGTH,
   MAX_GRID_SIDE_LENGTH,
 } from '../src/constants';
-import { isFullyWalled } from '../src/utils';
+import { isFullyWalled } from './testUtils';
 import createGrid from '../src/factory/createGrid';
 
 test('should create a fully-walled square grid', () => {
@@ -46,4 +46,14 @@ test('should use the maximum side length when the input side length is greater t
       expect(grid[0].length).toEqual(MAX_GRID_SIDE_LENGTH);
     }),
   );
+});
+
+test('should assign the row and column index to its cells', () => {
+  const grid = createGrid(MAX_GRID_SIDE_LENGTH);
+  grid.forEach((rowArr, row) => {
+    rowArr.forEach((cell, col) => {
+      expect(cell.row).toEqual(row);
+      expect(cell.col).toEqual(col);
+    });
+  });
 });

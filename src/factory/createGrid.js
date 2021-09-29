@@ -6,7 +6,21 @@ const createGrid = function createNByNMazeGrid(n) {
   if (n === undefined || sideLength < MIN_GRID_SIDE_LENGTH) sideLength = MIN_GRID_SIDE_LENGTH;
   if (sideLength > MAX_GRID_SIDE_LENGTH) sideLength = MAX_GRID_SIDE_LENGTH;
 
-  return Array.from({ length: sideLength }, () => Array.from({ length: sideLength }, createCell));
+  const grid = Array.from(
+    { length: sideLength }, () => Array.from(
+      { length: sideLength }, createCell,
+    ),
+  );
+  grid.forEach((rowArr, row) => {
+    rowArr.forEach((cell, col) => {
+      // eslint-disable-next-line no-param-reassign
+      cell.row = row;
+      // eslint-disable-next-line no-param-reassign
+      cell.col = col;
+    });
+  });
+
+  return grid;
 };
 
 export default createGrid;

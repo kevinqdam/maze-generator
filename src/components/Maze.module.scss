@@ -1,13 +1,30 @@
+$algos-select-width: 0.5rem;
+
 .center {
   margin: auto;
 }
 
 .maze {
   display: grid;
-  padding-top: 10px;
+  border: solid 2px black;
+  z-index: -1;
 }
 
 .input-side-length {
+  display: flex;
+  justify-content: center;
   padding-top: 10px;
-  width: 100px;
+}
+
+.algos {
+  width: $algos-select-width;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
 }

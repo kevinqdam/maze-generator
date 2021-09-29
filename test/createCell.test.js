@@ -1,7 +1,7 @@
 import {
   assert, property, array, boolean,
 } from 'fast-check';
-import { all, isFullyWalled } from '../src/utils';
+import { all, isFullyWalled } from './testUtils';
 import createCell from '../src/factory/createCell';
 
 test('should create a cell with all four walls', () => {

@@ -1,3 +1,4 @@
+import { isEqual } from 'lodash';
 import {
   assert, property, array, boolean,
 } from 'fast-check';
@@ -25,10 +26,10 @@ test('should be able to remove walls dependent on the input spec', () => {
         });
         expect(
           all([
-            cell.hasTopWall === hasTopWall,
-            cell.hasRightWall === hasRightWall,
-            cell.hasBottomWall === hasBottomWall,
-            cell.hasLeftWall === hasLeftWall,
+            isEqual(cell.hasTopWall, hasTopWall),
+            isEqual(cell.hasRightWall, hasRightWall),
+            isEqual(cell.hasBottomWall, hasBottomWall),
+            isEqual(cell.hasLeftWall, hasLeftWall),
           ]),
         ).toEqual(true);
       },

@@ -1,5 +1,11 @@
+import { isEqual } from 'lodash';
+
 import { DIRECTIONS } from '../constants';
-import { isOutOfBounds, removeWall } from './algosUtil';
+import {
+  isOutOfBounds,
+  removeWall,
+  shuffle,
+} from './algosUtil';
 
 const wilson = (function wilsonClosure() {
   const getNextStart = function getNextWalkOrigin(grid, index) {
@@ -21,12 +27,14 @@ const wilson = (function wilsonClosure() {
     /* Walk until the path encounters a cell already in the maze */
     while (!visited.has(current)) {
       /* Update the current cell by selecting randomly from the adjacent cells. */
-      const steps = [...DIRECTIONS].sort(() => 0.5 - Math.random());
+      const steps = shuffle([...DIRECTIONS]);
       let [nextRow, nextCol] = [];
       while (isOutOfBounds(grid, nextRow, nextCol)) {
         const prev = path[path.length - 1];
         let [dx, dy] = steps.pop();
-        if (current.row + dx === prev.row && current.col === prev.col) [dx, dy] = steps.pop();
+        if (isEqual(current.row + dx, prev.row) && isEqual(current.col, prev.col)) {
+          [dx, dy] = steps.pop();
+        }
         [nextRow, nextCol] = [current.row + dx, current.col + dy];
       }
       current = grid[nextRow][nextCol];

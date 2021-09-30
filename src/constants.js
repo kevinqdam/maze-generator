@@ -10,7 +10,7 @@ const DIRECTIONS = [
 const ONE_SECOND_IN_MS = 1000;
 const MAZE_GENERATION_ALGORITHMS = {
   WILSON: 'wilson',
-  RANDOMIZED_DFS: 'randomized dfs',
+  RANDOMIZED_DFS: 'randomized-dfs',
 };
 
 export {

@@ -1,9 +1,11 @@
+import { isNil } from 'lodash';
+
 import { MIN_GRID_SIDE_LENGTH, MAX_GRID_SIDE_LENGTH } from '../constants';
 import createCell from './createCell';
 
 const createGrid = function createNByNMazeGrid(n) {
   let sideLength = n;
-  if (n === undefined || sideLength < MIN_GRID_SIDE_LENGTH) sideLength = MIN_GRID_SIDE_LENGTH;
+  if (isNil(n) || sideLength < MIN_GRID_SIDE_LENGTH) sideLength = MIN_GRID_SIDE_LENGTH;
   if (sideLength > MAX_GRID_SIDE_LENGTH) sideLength = MAX_GRID_SIDE_LENGTH;
 
   const grid = Array.from(

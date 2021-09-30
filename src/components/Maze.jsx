@@ -84,7 +84,8 @@ const Maze = function Maze() {
         />
       </div>
       <div className={algosClassNames.join(' ')}>
-        <Select defaultValue="wilson" onChange={handleAlgorithmChange}>
+        <Select defaultValue="randomized-dfs" onChange={handleAlgorithmChange}>
+          <Option value="randomized-dfs">Randomized depth-first search</Option>
           <Option value="wilson">Wilson&#39;s algorithm</Option>
         </Select>
       </div>

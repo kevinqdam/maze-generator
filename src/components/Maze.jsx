@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { cloneDeep } from 'lodash';
 import { InputNumber, Button, Select } from 'antd';
 import 'regenerator-runtime/runtime';
 import Cell from './Cell';
@@ -35,7 +36,7 @@ const Maze = function Maze() {
     setIsGenerateBtnLoading(true);
     /* setTimeout to give time for the button loading animation to play */
     setTimeout(() => {
-      setGrid([...(generateMaze(createGrid(sideLength), algorithm))]);
+      setGrid(cloneDeep(generateMaze(createGrid(sideLength), algorithm)));
       setIsGenerateBtnLoading(false);
     }, ONE_SECOND_IN_MS);
   };

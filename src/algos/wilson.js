@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { isEqual } from 'lodash';
+import { cloneDeep, isEqual } from 'lodash';
 
 import { DIRECTIONS } from '../constants';
 import {
@@ -27,7 +27,7 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
   // Walk until the path encounters a cell already in the maze
   while (!current.visited) {
     // Update the current cell by selecting randomly from the adjacent cells.
-    const steps = shuffle([...DIRECTIONS]);
+    const steps = shuffle(cloneDeep(DIRECTIONS));
     let [nextRow, nextCol] = [];
     while (isOutOfBounds(grid, nextRow, nextCol)) {
       const prev = path[path.length - 1];
@@ -45,7 +45,7 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
      *   Otherwise, add the current cell to the walk and continue.
      */
     if (walked.has(current)) {
-      while (path[path.length - 1] !== current) walked.delete(path.pop());
+      while (!isEqual(path[path.length - 1], current)) walked.delete(path.pop());
     } else {
       walked.add(current);
       path.push(current);

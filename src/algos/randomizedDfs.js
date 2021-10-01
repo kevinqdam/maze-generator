@@ -1,19 +1,18 @@
 import { DIRECTIONS } from '../constants';
 import { isOutOfBounds, removeWall, shuffle } from './algosUtil';
 
-const dfs = function recursiveDfs(grid, row, col, visited) {
-  if (visited.has(grid[row][col])) return;
-
+const dfs = function recursiveDfs(grid, row, col) {
   const current = grid[row][col];
-  visited.add(current);
+  if (current.visited) return;
+  current.visited = true;
 
   const steps = shuffle([...DIRECTIONS]);
   steps.forEach(([dx, dy]) => {
     const [nextRow, nextCol] = [row + dx, col + dy];
-    if (isOutOfBounds(grid, nextRow, nextCol) || visited.has(grid[nextRow][nextCol])) return;
+    if (isOutOfBounds(grid, nextRow, nextCol) || grid[nextRow][nextCol].visited) return;
     const next = grid[nextRow][nextCol];
     removeWall(current, next);
-    dfs(grid, nextRow, nextCol, visited);
+    dfs(grid, nextRow, nextCol);
   });
 };
 

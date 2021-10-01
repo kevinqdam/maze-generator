@@ -18,25 +18,25 @@ const { Option } = Select;
 
 const Maze = function Maze() {
   /* Hooks */
-  const [sideLength, updateSideLength] = useState(MIN_GRID_SIDE_LENGTH);
-  const [grid, updateGrid] = useState(createGrid(sideLength));
-  const [algorithm, updateAlgorithm] = useState(MAZE_GENERATION_ALGORITHMS.WILSON);
-  const [isGenerateBtnLoading, updateIsGenerateBtnLoading] = useState(false);
+  const [sideLength, setSideLength] = useState(MIN_GRID_SIDE_LENGTH);
+  const [grid, setGrid] = useState(createGrid(sideLength));
+  const [algorithm, setAlgorithm] = useState(MAZE_GENERATION_ALGORITHMS.WILSON);
+  const [isGenerateBtnLoading, setIsGenerateBtnLoading] = useState(false);
 
   /* Event handlers */
   const handleInputNumberChange = (n) => {
-    updateSideLength(n);
-    updateGrid(createGrid(n));
+    setSideLength(n);
+    setGrid(createGrid(n));
   };
   const handleAlgorithmChange = (algo) => {
-    updateAlgorithm(algo);
+    setAlgorithm(algo);
   };
   const handleGenerateButtonClick = () => {
-    updateIsGenerateBtnLoading(true);
+    setIsGenerateBtnLoading(true);
     /* setTimeout to give time for the button loading animation to play */
     setTimeout(() => {
-      updateGrid([...(generateMaze(createGrid(sideLength), algorithm))]);
-      updateIsGenerateBtnLoading(false);
+      setGrid([...(generateMaze(createGrid(sideLength), algorithm))]);
+      setIsGenerateBtnLoading(false);
     }, ONE_SECOND_IN_MS);
   };
 

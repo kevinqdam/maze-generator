@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { isEqual } from 'lodash';
 
 import { DIRECTIONS } from '../constants';
@@ -14,7 +15,7 @@ const getNextStart = function getNextWalkOrigin(grid, index) {
   return [row, col];
 };
 
-const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol], visited) {
+const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
   // Initialize variables for the random walk
   const walked = new Set();
   const path = [];
@@ -24,7 +25,7 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol], vis
   path.push(current);
 
   // Walk until the path encounters a cell already in the maze
-  while (!visited.has(current)) {
+  while (!current.visited) {
     // Update the current cell by selecting randomly from the adjacent cells.
     const steps = shuffle([...DIRECTIONS]);
     let [nextRow, nextCol] = [];
@@ -55,29 +56,28 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol], vis
    * Add the walked path to the maze by removing the walls that go through the path.
    */
   let thisCell = path.pop();
-  visited.add(thisCell);
+  thisCell.visited = true;
   while (path.length > 0) {
     const thatCell = path.pop();
     removeWall(thisCell, thatCell);
     thisCell = thatCell;
-    visited.add(thisCell);
+    thisCell.visited = true;
   }
 };
 
 const wilson = function wilsonsLoopErasedRandomWalkAlgorithm(grid) {
   // Initialize variables
-  const visited = new Set();
   const targetMazeSize = (grid.length * grid[0].length);
-  visited.add(grid[0][0]);
+  grid[0][0].visited = true;
   let current = 1;
 
   /**
    * Get the next cell to start the walk from. Then, perform the loop-erased random walk.
    * Walk from each unvisited cell until everything has been visited.
    */
-  while (visited.size < targetMazeSize) {
+  while (current < targetMazeSize) {
     const [row, col] = getNextStart(grid, current);
-    if (!visited.has(grid[row][col])) randomWalk(grid, [row, col], visited);
+    if (!grid[row][col].visited) randomWalk(grid, [row, col]);
     current += 1;
   }
 };

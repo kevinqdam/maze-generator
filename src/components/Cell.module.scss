@@ -2,7 +2,7 @@ $active-cell-color: teal;
 $cell-wall: 1px solid black;
 
 .active {
-  color: $active-cell-color;
+  background-color: $active-cell-color;
 }
 
 .top-wall {

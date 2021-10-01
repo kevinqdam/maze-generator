@@ -24,7 +24,7 @@ const removeWall = function removeWallBetweenCells(thisCell, thatCell) {
     thatCell.hasBottomWall = false;
   }
 };
-/* eslint-enable no-alert, no-console */
+/* eslint-enable no-param-reassign */
 
 const shuffle = (function shuffleClosure() {
   const getRandomFromRange = (low, high) => (Math.floor(Math.random() * (high - low + 1)) + low);

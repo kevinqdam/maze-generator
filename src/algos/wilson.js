@@ -16,7 +16,7 @@ const wilson = (function wilsonClosure() {
   };
 
   const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol], visited) {
-    /* Initialize variables for the random walk */
+    // Initialize variables for the random walk
     const walked = new Set();
     const path = [];
     const startCell = grid[startRow][startCol];
@@ -24,9 +24,9 @@ const wilson = (function wilsonClosure() {
     walked.add(current);
     path.push(current);
 
-    /* Walk until the path encounters a cell already in the maze */
+    // Walk until the path encounters a cell already in the maze
     while (!visited.has(current)) {
-      /* Update the current cell by selecting randomly from the adjacent cells. */
+      // Update the current cell by selecting randomly from the adjacent cells.
       const steps = shuffle([...DIRECTIONS]);
       let [nextRow, nextCol] = [];
       while (isOutOfBounds(grid, nextRow, nextCol)) {
@@ -66,7 +66,7 @@ const wilson = (function wilsonClosure() {
   };
 
   return function wilsonsLoopErasedRandomWalkAlgorithm(grid) {
-    /* Initialize variables */
+    // Initialize variables
     const visited = new Set();
     const targetMazeSize = (grid.length * grid[0].length);
     visited.add(grid[0][0]);

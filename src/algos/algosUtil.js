@@ -26,6 +26,7 @@ const removeWall = function removeWallBetweenCells(thisCell, thatCell) {
 };
 /* eslint-enable no-param-reassign */
 
+/* eslint-disable no-param-reassign */
 const shuffle = (function shuffleClosure() {
   const getRandomFromRange = (low, high) => (Math.floor(Math.random() * (high - low + 1)) + low);
 
@@ -38,6 +39,7 @@ const shuffle = (function shuffleClosure() {
     return arr;
   };
 }());
+/* eslint-enable no-param-reassign */
 
 export {
   isOutOfBounds,

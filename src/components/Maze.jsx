@@ -36,7 +36,7 @@ const Maze = function Maze() {
     setIsGenerateBtnLoading(true);
     /* setTimeout to give time for the button loading animation to play */
     setTimeout(() => {
-      setGrid(cloneDeep(generateMaze(createGrid(sideLength), algorithm)));
+      setGrid(generateMaze(createGrid(sideLength), algorithm));
       setIsGenerateBtnLoading(false);
     }, ONE_SECOND_IN_MS);
   };

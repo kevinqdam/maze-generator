@@ -17,8 +17,7 @@ const dfs = function recursiveDfs(grid, row, col) {
 };
 
 const randomizedDfs = function removeWallsByRandomizedDfs(grid) {
-  const visited = new Set();
-  dfs(grid, 0, 0, visited);
+  dfs(grid, 0, 0);
 };
 
 export default randomizedDfs;

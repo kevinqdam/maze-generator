@@ -3,6 +3,8 @@ import { isNil } from 'lodash';
 const createCell = function createGridCell(spec) {
   if (isNil(spec)) {
     return {
+      isActive: false,
+      visited: false,
       hasTopWall: true,
       hasRightWall: true,
       hasBottomWall: true,
@@ -11,6 +13,8 @@ const createCell = function createGridCell(spec) {
   }
 
   const {
+    isActive = false,
+    visited = false,
     hasTopWall = true,
     hasRightWall = true,
     hasBottomWall = true,
@@ -18,6 +22,8 @@ const createCell = function createGridCell(spec) {
   } = spec;
 
   return {
+    isActive,
+    visited,
     hasTopWall,
     hasRightWall,
     hasBottomWall,

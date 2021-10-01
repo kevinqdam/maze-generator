@@ -7,13 +7,13 @@ import styles from './Cell.module.scss';
 const Cell = function Cell(props) {
   const {
     cell: {
-      hasTopWall, hasRightWall, hasBottomWall, hasLeftWall,
+      isActive, hasTopWall, hasRightWall, hasBottomWall, hasLeftWall,
     },
   } = props;
 
   /* Class names and styles */
   const classNames = [
-    styles.cell,
+    isActive ? styles.active : null,
     hasTopWall ? styles['top-wall'] : null,
     hasRightWall ? styles['right-wall'] : null,
     hasBottomWall ? styles['bottom-wall'] : null,
@@ -26,6 +26,7 @@ const Cell = function Cell(props) {
 };
 Cell.propTypes = {
   cell: PropTypes.shape({
+    isActive: PropTypes.bool,
     hasTopWall: PropTypes.bool,
     hasRightWall: PropTypes.bool,
     hasBottomWall: PropTypes.bool,
@@ -34,6 +35,7 @@ Cell.propTypes = {
 };
 Cell.defaultProps = {
   cell: PropTypes.shape({
+    isActive: false,
     hasTopWall: true,
     hasRightWall: true,
     hasBottomWall: true,

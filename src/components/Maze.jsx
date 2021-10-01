@@ -34,7 +34,7 @@ const Maze = function Maze() {
   };
   const handleGenerateButtonClick = () => {
     setIsGenerateBtnLoading(true);
-    /* setTimeout to give time for the button loading animation to play */
+    // setTimeout to give time for the button loading animation to play
     setTimeout(() => {
       setGrid(generateMaze(createGrid(sideLength), algorithm));
       setIsGenerateBtnLoading(false);
@@ -67,10 +67,10 @@ const Maze = function Maze() {
   return (
     <div>
       <div style={gridDynamicStyles} className={gridViewportClassNames.join(' ')}>
-        {grid.map((row, rowIndex) => row.map((cell, cellIndex) => (
+        {grid.map((row, rowIndex) => row.map((cell, colIndex) => (
           <Cell
           // eslint-disable-next-line react/no-array-index-key
-            key={`${rowIndex}-${cellIndex}`}
+            key={`${rowIndex}-${colIndex}`}
             cell={cell}
           />
         )))}

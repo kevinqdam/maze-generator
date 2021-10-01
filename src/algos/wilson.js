@@ -72,9 +72,9 @@ const wilson = function wilsonsLoopErasedRandomWalkAlgorithm(grid) {
   let current = 1;
 
   /**
-     * Get the next cell to start the walk from. Then, perform the loop-erased random walk.
-     * Walk from each unvisited cell until everything has been visited.
-     */
+   * Get the next cell to start the walk from. Then, perform the loop-erased random walk.
+   * Walk from each unvisited cell until everything has been visited.
+   */
   while (visited.size < targetMazeSize) {
     const [row, col] = getNextStart(grid, current);
     if (!visited.has(grid[row][col])) randomWalk(grid, [row, col], visited);

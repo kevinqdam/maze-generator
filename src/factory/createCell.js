@@ -5,6 +5,7 @@ const createCell = function createGridCell(spec) {
     return {
       isActive: false,
       visited: false,
+      path: false,
       hasTopWall: true,
       hasRightWall: true,
       hasBottomWall: true,
@@ -15,6 +16,7 @@ const createCell = function createGridCell(spec) {
   const {
     isActive = false,
     visited = false,
+    path = false,
     hasTopWall = true,
     hasRightWall = true,
     hasBottomWall = true,
@@ -24,6 +26,7 @@ const createCell = function createGridCell(spec) {
   return {
     isActive,
     visited,
+    path,
     hasTopWall,
     hasRightWall,
     hasBottomWall,

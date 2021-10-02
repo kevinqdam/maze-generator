@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { cloneDeep } from 'lodash';
+import { isEqual } from 'lodash';
 import { InputNumber, Button, Select } from 'antd';
 import 'regenerator-runtime/runtime';
 import Cell from './Cell';
@@ -14,6 +14,7 @@ import {
 } from '../constants';
 
 import styles from './Maze.module.scss';
+import aStar from '../algos/aStar';
 
 const { Option } = Select;
 
@@ -38,6 +39,23 @@ const Maze = function Maze() {
     setTimeout(() => {
       setGrid(generateMaze(createGrid(sideLength), algorithm));
       setIsGenerateBtnLoading(false);
+    }, ONE_SECOND_IN_MS);
+  };
+  const handleSolveButtonClick = () => {
+    setTimeout(() => {
+      const [path, visited] = aStar(grid, grid[0][0], grid[grid.length - 1][grid[0].length - 1]);
+      console.log(path.length, visited.size);
+      path.forEach((cell) => {
+        grid[cell.row][cell.col].path = true;
+        visited.delete(cell);
+      });
+      visited.forEach((cell) => {
+        if (!(isEqual(cell.row, 0) && isEqual(cell.col, 0))
+            && !(isEqual(cell.row, grid.length - 1) && isEqual(cell.col, grid[0].length - 1))) {
+          grid[cell.row][cell.col].visited = true;
+        }
+      });
+      setGrid([...grid]);
     }, ONE_SECOND_IN_MS);
   };
 
@@ -72,6 +90,8 @@ const Maze = function Maze() {
           // eslint-disable-next-line react/no-array-index-key
             key={`${rowIndex}-${colIndex}`}
             cell={cell}
+            isStart={isEqual(rowIndex, 0) && isEqual(colIndex, 0)}
+            isEnd={isEqual(rowIndex, grid.length - 1) && isEqual(colIndex, grid[0].length - 1)}
           />
         )))}
       </div>
@@ -97,6 +117,11 @@ const Maze = function Maze() {
           onClick={handleGenerateButtonClick}
         >
           Generate
+        </Button>
+        <Button
+          onClick={handleSolveButtonClick}
+        >
+          Solve
         </Button>
       </div>
     </div>

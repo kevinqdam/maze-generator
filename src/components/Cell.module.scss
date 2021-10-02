@@ -1,8 +1,23 @@
 $active-cell-color: teal;
+$terminal-cell-color: rgb(56, 160, 230);
+$path-cell-color: rgba(20, 223, 20, 0.329);
+$visited-cell-color: rgba(128, 128, 128, 0.349);
 $cell-wall: 1px solid black;
 
 .active {
   background-color: $active-cell-color;
+}
+
+.terminal {
+  background-color: $terminal-cell-color;
+}
+
+.path {
+  background-color: $path-cell-color;
+}
+
+.visited {
+  background-color: $visited-cell-color;
 }
 
 .top-wall {

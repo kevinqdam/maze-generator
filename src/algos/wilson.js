@@ -15,7 +15,7 @@ const getNextStart = function getNextWalkOrigin(grid, index) {
   return [row, col];
 };
 
-const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
+const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol], visited) {
   // Initialize variables for the random walk
   const walked = new Set();
   const path = [];
@@ -25,17 +25,17 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
   path.push(current);
 
   // Walk until the path encounters a cell already in the maze
-  while (!current.visited) {
+  while (!visited.has(current)) {
     // Update the current cell by selecting randomly from the adjacent cells.
     const steps = shuffle(cloneDeep(DIRECTIONS));
     let [nextRow, nextCol] = [];
     while (isOutOfBounds(grid, nextRow, nextCol)) {
       const prev = path[path.length - 1];
-      let [dx, dy] = steps.pop();
-      if (isEqual(current.row + dx, prev.row) && isEqual(current.col, prev.col)) {
-        [dx, dy] = steps.pop();
+      let [dr, dc] = steps.pop();
+      if (isEqual(current.row + dr, prev.row) && isEqual(current.col, prev.col)) {
+        [dr, dc] = steps.pop();
       }
-      [nextRow, nextCol] = [current.row + dx, current.col + dy];
+      [nextRow, nextCol] = [current.row + dr, current.col + dc];
     }
     current = grid[nextRow][nextCol];
 
@@ -56,19 +56,20 @@ const randomWalk = function loopErasedRandomWalk(grid, [startRow, startCol]) {
    * Add the walked path to the maze by removing the walls that go through the path.
    */
   let thisCell = path.pop();
-  thisCell.visited = true;
+  visited.add(thisCell);
   while (path.length > 0) {
     const thatCell = path.pop();
     removeWall(thisCell, thatCell);
     thisCell = thatCell;
-    thisCell.visited = true;
+    visited.add(thisCell);
   }
 };
 
 const wilson = function wilsonsLoopErasedRandomWalkAlgorithm(grid) {
   // Initialize variables
+  const visited = new Set();
   const targetMazeSize = (grid.length * grid[0].length);
-  grid[0][0].visited = true;
+  visited.add(grid[0][0]);
   let current = 1;
 
   /**
@@ -77,7 +78,7 @@ const wilson = function wilsonsLoopErasedRandomWalkAlgorithm(grid) {
    */
   while (current < targetMazeSize) {
     const [row, col] = getNextStart(grid, current);
-    if (!grid[row][col].visited) randomWalk(grid, [row, col]);
+    if (!visited.has(grid[row][col])) randomWalk(grid, [row, col], visited);
     current += 1;
   }
 };

@@ -10,10 +10,11 @@ test('should create a cell with all four walls', () => {
   expect(isFullyWalled(cell)).toEqual(true);
 });
 
-test('should create an inactive, unvisited cell with all four walls when passed an empty spec', () => {
+test('should create an inactive, unvisited cell that is not on the solution path with all four walls when passed an empty spec', () => {
   const cell = createCell({});
   expect(cell.isActive).toEqual(false);
   expect(cell.visited).toEqual(false);
+  expect(cell.path).toEqual(false);
   expect(isFullyWalled(cell)).toEqual(true);
 });
 

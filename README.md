@@ -3,7 +3,7 @@
 ## Demonstration
 Try the app [here](https://kevinqdam.github.io/maze-generator/) on GitHub pages!
 
-## Usage Instructions to run Locally
+## Usage Instructions to run locally
 1. Clone this repository and navigate to the root.
 2. Execute the following from a terminal window.
 

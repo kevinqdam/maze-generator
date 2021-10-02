@@ -5,9 +5,9 @@ import randomizedDfs from './randomizedDfs';
 import wilson from './wilson';
 
 const generateMaze = function generateMazeByRemovingWalls(grid, algorithm) {
-  if (isEqual(algorithm, MAZE_GENERATION_ALGORITHMS.RANDOMIZED_DFS)) {
+  if (isEqual(MAZE_GENERATION_ALGORITHMS.RANDOMIZED_DFS, algorithm)) {
     randomizedDfs(grid);
-  } else if (isEqual(algorithm, MAZE_GENERATION_ALGORITHMS.WILSON)) {
+  } else if (isEqual(MAZE_GENERATION_ALGORITHMS.WILSON, algorithm)) {
     wilson(grid);
   }
 

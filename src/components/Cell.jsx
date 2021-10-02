@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isNil } from 'lodash';
 
-import styles from './Cell.module.scss';
+import styles from './styles/Cell.module.scss';
 
 const Cell = function Cell(props) {
   const {

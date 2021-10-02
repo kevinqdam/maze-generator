@@ -12,6 +12,10 @@ const MAZE_GENERATION_ALGORITHMS = {
   WILSON: 'wilson',
   RANDOMIZED_DFS: 'randomized-dfs',
 };
+const MAZE_SOLVING_ALGORITHMS = {
+  BFS: 'bfs',
+  A_STAR: 'a-star',
+};
 
 export {
   MIN_GRID_SIDE_LENGTH,
@@ -20,4 +24,5 @@ export {
   DIRECTIONS,
   ONE_SECOND_IN_MS,
   MAZE_GENERATION_ALGORITHMS,
+  MAZE_SOLVING_ALGORITHMS,
 };

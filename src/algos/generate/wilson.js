@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { cloneDeep, isEqual } from 'lodash';
 
-import { DIRECTIONS } from '../constants';
+import { DIRECTIONS } from '../../constants';
 import {
   isOutOfBounds,
   removeWall,
   shuffle,
-} from './algosUtil';
+} from '../algosUtil';
 
 const getNextStart = function getNextWalkOrigin(grid, index) {
   const row = Math.floor(index / grid.length);

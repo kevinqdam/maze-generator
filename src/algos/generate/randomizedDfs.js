@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
-import { DIRECTIONS } from '../constants';
-import { isOutOfBounds, removeWall, shuffle } from './algosUtil';
+import { DIRECTIONS } from '../../constants';
+import { isOutOfBounds, removeWall, shuffle } from '../algosUtil';
 
 const dfs = function recursiveDfs(grid, row, col, visited) {
   const current = grid[row][col];

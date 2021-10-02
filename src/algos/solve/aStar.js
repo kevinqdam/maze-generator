@@ -1,16 +1,15 @@
 import { MinPriorityQueue } from '@datastructures-js/priority-queue';
 import { isEqual, isNil } from 'lodash';
-import { DIRECTIONS } from '../constants';
-import { isOutOfBounds } from './algosUtil';
+import { DIRECTIONS } from '../../constants';
+import { isOutOfBounds } from '../algosUtil';
 
 const aStar = function aStarPathFinding(grid, source, target) {
-  // Initialize variables and cost/heuristic functions
   const visited = new Set();
   const cameFrom = new Map();
   /**
-   * For this app, the cost of going from cell to cell is simply one hop.
-   * A* requires a cost and a heuristic function, so a trivial cost
-   * is defined here to highlight the generality of A*.
+   * A* requires a cost function and a heuristic function to calculate priority.
+   * For this app, the cost of going from cell to cell is simply one hop, so a
+   * trivial cost function is defined here to highlight the generality of A*.
    */
   const cost = () => 1;
   const heuristic = function calculateManhattanDistance(u, v) {

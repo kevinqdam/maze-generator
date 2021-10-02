@@ -1,5 +1,3 @@
-$algos-select-width: 0.5rem;
-
 .center {
   margin: auto;
 }
@@ -16,14 +14,7 @@ $algos-select-width: 0.5rem;
   padding-top: 10px;
 }
 
-.algos {
-  width: $algos-select-width;
-  display: flex;
-  justify-content: center;
-  padding-top: 10px;
-}
-
-.btns {
+.gen-solve {
   display: flex;
   justify-content: center;
   padding-top: 10px;

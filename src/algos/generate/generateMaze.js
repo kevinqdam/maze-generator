@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 
-import { MAZE_GENERATION_ALGORITHMS } from '../constants';
+import { MAZE_GENERATION_ALGORITHMS } from '../../constants';
 import randomizedDfs from './randomizedDfs';
 import wilson from './wilson';
 

@@ -20,7 +20,7 @@ const App = function MainApp() {
           <p>Maze Generator & Solver © 2021 Created by Kevin Dam</p>
           <a
             className={styles['anchor-color']}
-            href="https://github.com/kevindam96/maze-generator"
+            href="https://github.com/kevinqdam/maze-generator"
           >
             <GithubFilled className={styles.icon} />
           </a>

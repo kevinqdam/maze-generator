@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack serve --hot --open --mode development",
-    "build": "rm -rf dist && webpack --config webpack.config.js --mode production && cp -r public dist",
+    "build": "rm -rf dist && webpack --config webpack.config.js --mode production",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "repository": {
